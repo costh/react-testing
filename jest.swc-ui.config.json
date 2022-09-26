@@ -1,0 +1,21 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "@happy-dom/jest-environment",
+  "roots": ["<rootDir>"],
+  "transform": {
+    "\\.spec.[jt]sx?$": [
+      "@swc/jest",
+      {
+        "jsc": {
+          "transform": {
+            "react": {
+              "runtime": "automatic"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "testRegex": "\\.ui.[jt]sx?$",
+  "moduleNameMapper": { "\\.(css|sass)$": "identity-obj-proxy" }
+}
