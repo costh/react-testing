@@ -1,5 +1,4 @@
 import { create } from "react-test-renderer";
-import ShallowRenderer from "react-test-renderer/shallow";
 import DummyComponentWithProps from "./dummyComponentWithProps";
 
 const TestText = "Apples";

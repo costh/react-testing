@@ -1,6 +1,4 @@
-type Props = {};
-
-export default function DummyComponent({}: Props) {
+export default function DummyComponent() {
   return (
     <div className="dummyComp1Class">
       <h1>This is my heading</h1>
