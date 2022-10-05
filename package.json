@@ -18,11 +18,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test -- --config=jest.babel.config.json",
-    "test:babel": " jest --config=jest.babel.config.json --watch",
-    "test:babel-ui": " jest --config=jest.babel-ui.config.json --watch",
-    "test:swc": " jest --config=jest.swc.config.json --watch",
-    "test:swc-ui": " jest --config=jest.swc-ui.config.json --watch",
+    "test": "react-scripts test -- --config=jest.babel.config.js",
+    "test:babel": " jest --config=jest.babel.config.js --watch",
+    "test:babel:ui": " jest --config=jest.babel-ui.config.js --watch",
+    "test:swc": " jest --config=jest.swc.config.js --watch",
+    "test:swc:ui": " jest --config=jest.swc-ui.config.js --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

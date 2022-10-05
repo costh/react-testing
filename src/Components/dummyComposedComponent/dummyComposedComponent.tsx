@@ -3,18 +3,19 @@ import DummyComponent from "../dummyComponent/dummyComponent";
 import DummyComponentWithProps from "../dummyComponentWithProps/dummyComponentWithProps";
 import DummyComponentWithState from "../dummyComponentWithState/dummyComponentWithState";
 
-type Props = {
+export type dummyComponentProps = {
   heading: string;
   count: number;
+  color: string;
 };
 
-const dummyComposedComponent = ({ heading, count }: Props) => {
+const dummyComposedComponent = ({ heading, count, color }: dummyComponentProps) => {
   return (
     <div>
       <div>
         <div>
           <DummyComponent />
-          <DummyComponentWithProps text={heading} />
+          <DummyComponentWithProps text={heading} color={color} />
           <DummyComponentWithState countDefault={count} />
         </div>
       </div>

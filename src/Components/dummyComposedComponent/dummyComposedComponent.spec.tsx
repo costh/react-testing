@@ -2,28 +2,43 @@ import { create } from "react-test-renderer";
 import DummyComponent from "../dummyComponent/dummyComponent";
 import DummyComponentWithProps from "../dummyComponentWithProps/dummyComponentWithProps";
 import DummyComponentWithState from "../dummyComponentWithState/dummyComponentWithState";
-import DummyComposedComponent from "./dummyComposedComponent";
+import DummyComposedComponent, {
+  dummyComponentProps,
+} from "./dummyComposedComponent";
 
-const TestText = "Interesting Heading";
-const testNumber = 99;
+const dummyComponentMockProps: dummyComponentProps = {
+  heading: "Interesting heading",
+  count: 15,
+  color: "blue",
+};
 
-describe("Renders the dummy component with provided props", () => {
-  it("passes in correct props + children recieves correct props", () => {
-    const result = create(
-      <DummyComposedComponent heading={TestText} count={testNumber} />
-    ).root;
+const result = create(
+  <DummyComposedComponent {...dummyComponentMockProps} />
+).root;
 
-    expect(result.props).toEqual({ heading: TestText, count: testNumber });
+describe("Dummy component unit test suite", () => {
+  it("contains the components required for this component to function", () => {
+    expect(result.findByType(DummyComponent)).toBeTruthy();
+    expect(result.findByType(DummyComponentWithProps)).toBeTruthy();
+    expect(result.findByType(DummyComponentWithState)).toBeTruthy();
+  });
 
-    expect(result.findAllByType(DummyComponent)).toBeTruthy();
-    expect(result.findAllByType(DummyComponentWithProps)).toBeTruthy();
-    expect(result.findAllByType(DummyComponentWithState)).toBeTruthy();
+  it("passes in correct props to dummyComponentWithProps", () => {
+    expect(result.findByType(DummyComponentWithProps).props).toHaveProperty(
+      "text",
+      dummyComponentMockProps.heading
+    );
 
-    expect(result.findByType(DummyComponentWithProps).props).toEqual({
-      text: TestText,
-    });
-    expect(result.findByType(DummyComponentWithState).props).toEqual({
-      countDefault: testNumber,
-    });
+    expect(result.findByType(DummyComponentWithProps).props).toHaveProperty(
+      "color",
+      dummyComponentMockProps.color
+    );
+  });
+
+  it("passes in correct props to DummyComponentWithState", () => {
+    expect(result.findByType(DummyComponentWithState).props).toHaveProperty(
+      "countDefault",
+      dummyComponentMockProps.count
+    );
   });
 });

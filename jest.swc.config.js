@@ -1,8 +1,9 @@
-{
-  "preset": "ts-jest",
-  "testEnvironment": "node",
-  "roots": ["<rootDir>"],
-  "transform": {
+const sharedConfig = require('./jest.default.config.js');
+
+module.exports = {
+  ...sharedConfig,
+  testEnvironment: "node",
+  transform: {
     "\\.spec.[jt]sx?$": [
       "@swc/jest",
       {
@@ -16,5 +17,5 @@
       }
     ]
   },
-  "moduleNameMapper": { "\\.(css|sass)$": "identity-obj-proxy" }
-}
+  textRegex: "\\.spec.[jt]sx?$"
+};

@@ -1,9 +1,0 @@
-{
-  "preset": "ts-jest",
-  "testEnvironment": "node",
-  "roots": ["<rootDir>"],
-  "transform": {
-    "\\.spec.[jt]sx?$": "babel-jest"
-  },
-  "moduleNameMapper": { "\\.(css|sass)$": "identity-obj-proxy" }
-}
